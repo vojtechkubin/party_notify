@@ -1,4 +1,3 @@
-from json import JSONEncoder
 import json
 
 
@@ -11,8 +10,4 @@ class Person(object):
         self.mail = mail
         self.tel_number = tel_number
         self.facebook = facebook
-
-class Person_encoder(JSONEncoder):		
-    def default(self, o):
-        return o.__dict__
 

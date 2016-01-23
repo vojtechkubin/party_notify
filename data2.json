@@ -1,4 +1,4 @@
 {
-    "persona": "{\"tel_number\": \"777999555\", \"mail\": \"mail@hacking.fg\", \"second_name\": \"second_name\", \"birthday_date\": \"2016-01-23\", \"first_name\": \"first_name\", \"facebook\": \"facebook\", \"nameday_date\": \"kokos\"}",
-    "personb": "{\"tel_number\": \"777999555\", \"mail\": \"mail@hacking.fg\", \"second_name\": \"second_name\", \"birthday_date\": \"2016-01-23\", \"first_name\": \"first_name\", \"facebook\": \"facebook\", \"nameday_date\": \"kokos\"}"
+    "persona": "{\n    \"facebook\": \"facebook\",\n    \"first_name\": \"first_name\",\n    \"mail\": \"mail@hacking.fg\",\n    \"birthday_date\": \"2016-01-23\",\n    \"second_name\": \"second_name\",\n    \"tel_number\": \"777999555\",\n    \"nameday_date\": \"kokos\"\n}",
+    "personb": "{\n    \"facebook\": \"facebook\",\n    \"first_name\": \"first_name\",\n    \"mail\": \"mail@hacking.fg\",\n    \"birthday_date\": \"2016-01-23\",\n    \"second_name\": \"second_name\",\n    \"tel_number\": \"777999555\",\n    \"nameday_date\": \"kokos\"\n}"
 }

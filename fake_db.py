@@ -1,4 +1,3 @@
-from person import Person_encoder
 import json
 
 
@@ -6,13 +5,8 @@ def save(data, file_name = 'database'):
 
     tmp = {}
 
-    print(data)
-
     for item in data:
-        
-        tmp[item] = Person_encoder().encode(data[item])
-
-    print(tmp)
+        tmp[item] = Encoder(indent = 4).encode(data[item])
 
     file_name = file_extension(file_name)
     with open(file_name, 'w') as data_file:
@@ -29,3 +23,8 @@ def file_extension(file_name):
     if '.json' not in result:
         result += '.json'
     return result
+
+class Encoder(json.JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
