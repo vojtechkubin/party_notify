@@ -1,4 +1,5 @@
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui 
+from PyQt4.QtCore import pyqtSlot, Qt
 from datetime import date
 import re
 
@@ -15,8 +16,8 @@ class Main_window(QtGui.QWidget):
         self.btn.resize(self.btn.sizeHint())
         self.first_name_line_edit = QtGui.QLineEdit()
         self.second_name_line_edit = QtGui.QLineEdit()
-        self.birthday_date_line_edit = QtGui.QLineEdit()
-        self.nameday_date_line_edit = QtGui.QLineEdit()
+        self.birthday_date_line_edit = QtGui.QDateEdit()
+        self.nameday_date_line_edit = QtGui.QDateEdit()
         self.mail_line_edit = QtGui.QLineEdit()
         self.tel_number_line_edit = QtGui.QLineEdit()
         self.facebook_line_edit = QtGui.QLineEdit()
@@ -44,12 +45,13 @@ class Main_window(QtGui.QWidget):
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
+    @pyqtSlot()
     def keyPressEvent(self, event):
-        if event.key() == QtCore.Qt.Key_Return:
+        if event.key() == Qt.Key_Return:
             #if the pressed key == ENTER -> button has been clicked
             self.btn_on_clicked()
 
-    @QtCore.pyqtSlot()
+    @pyqtSlot()
     def btn_on_clicked(self):
         if not self.first_name_line_edit.text():
             print("first name is empty")
@@ -64,10 +66,10 @@ class Main_window(QtGui.QWidget):
             print('at least one of: "mail, tel. number, facebook address" has to be filled')
 
 def correct_date_test(date_test):
-    person_date = re.compile(r'(\d\d\d\d):(\d\d):(\d\d)').match(date_test)
+    person_date = re.compile(r'^(\d\d\d\d):(\d\d):(\d\d)$').match(date_test)
     if not person_date:
         return False
-    today_date = re.compile(r'(\d\d\d\d)-\d\d-\d\d').match(str(date.today())) 
+    today_date = re.compile(r'^(\d\d\d\d)-\d\d-\d\d$').match(str(date.today())) 
     yyyy = int(person_date.group(1))
     mm = int(person_date.group(2))
     dd = int(person_date.group(3))
