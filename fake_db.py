@@ -1,21 +1,19 @@
 import json
-import person
 import pickle
 
 
 def save(data, file_name = 'database'):
     filen = file_extension(file_name)
-    pickle_out = open(filen,"wb")
 
-    pickle.dump(data, pickle_out)
-
-    pickle_out.close()
+    with open(filen,"wb") as pickle_out:
+        pickle.dump(data, pickle_out)
 
 def load(file_name = 'database'):
     filen = file_extension(file_name)
-    pickle_in = open(filen, "rb")
-    data = pickle.load(pickle_in)
-    pickle_in.close()
+
+    with open(filen, "rb") as pickle_in: 
+        data = pickle.load(pickle_in)
+ 
     return data
 
 def file_extension(file_name):

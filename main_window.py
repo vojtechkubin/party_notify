@@ -92,5 +92,5 @@ class Main_window(QtGui.QWidget):
             print("naplnění dtb")
             print(first_name, second_name, mail, tel_number, facebook, birthday_date, nameday_date)
             new_person = Person(first_name, second_name, birthday_date, nameday_date, mail, tel_number, facebook)
-            self.db[first_name + " " + second_name] = new_person
+            self.db.append(new_person)
             print("actual data", self.db)
