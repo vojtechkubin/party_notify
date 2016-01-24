@@ -17,8 +17,10 @@ class Main_window(QtGui.QWidget):
         self.first_name_line_edit = QtGui.QLineEdit()
         self.second_name_line_edit = QtGui.QLineEdit()
         self.birthday_date_line_edit = QtGui.QDateEdit()
+        self.birthday_date_line_edit.setDisplayFormat("dd.MM.yyyy")
         self.birthday_date_line_edit.setCalendarPopup(True)
         self.nameday_date_line_edit = QtGui.QDateEdit()
+        self.nameday_date_line_edit.setDisplayFormat("dd.MM")
         self.nameday_date_line_edit.setCalendarPopup(True)
         self.mail_line_edit = QtGui.QLineEdit()
         self.tel_number_line_edit = QtGui.QLineEdit()
@@ -34,8 +36,8 @@ class Main_window(QtGui.QWidget):
         self.form_layout = QtGui.QFormLayout(self)
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
         self.form_layout.addRow("*&Second name:", self.second_name_line_edit)
-        self.form_layout.addRow("*&Birthday date (YYYY:MM:DD):", self.birthday_date_line_edit)
-        self.form_layout.addRow("*&Nameday date:", self.nameday_date_line_edit)
+        self.form_layout.addRow("*&Birthday date (DD.MM.YYYY):", self.birthday_date_line_edit)
+        self.form_layout.addRow("*&Nameday date (DD.MM):", self.nameday_date_line_edit)
         self.form_layout.addRow("&Mail address:", self.mail_line_edit)
         self.form_layout.addRow("&Tel. number:", self.tel_number_line_edit)
         self.form_layout.addRow("&Facebook address:", self.facebook_line_edit)
@@ -55,30 +57,14 @@ class Main_window(QtGui.QWidget):
 
     @pyqtSlot()
     def btn_on_clicked(self):
+        error = []
         if not self.first_name_line_edit.text():
-            print("first name is empty")
+            error.append('first name is empty')
         if not self.second_name_line_edit.text():
-            print("second name is empty")
-        if not self.birthday_date_line_edit.text():
-            print("birthday date is empty")
-        else: 
-            if correct_date_test(self.birthday_date_line_edit.text()) == False:
-                print("incorrect birthday date format")
+            error.append('second name is empty')
         if not self.mail_line_edit.text() and not self.tel_number_line_edit.text() and not self.facebook_line_edit.text():
-            print('at least one of: "mail, tel. number, facebook address" has to be filled')
-
-def correct_date_test(date_test):
-    person_date = re.compile(r'^(\d\d\d\d):(\d\d):(\d\d)$').match(date_test)
-    if not person_date:
-        return False
-    today_date = re.compile(r'^(\d\d\d\d)-\d\d-\d\d$').match(str(date.today())) 
-    yyyy = int(person_date.group(1))
-    mm = int(person_date.group(2))
-    dd = int(person_date.group(3))
-    if yyyy > int(today_date.group(1)) or mm > 12: 
-        return False
-    if ((mm%2 == 0 and mm <= 7 and dd > 30) or (mm%2 == 0 and mm>= 8 and dd > 31) or 
-        (mm%2 == 1 and mm <= 7 and dd > 31) or (mm%2 == 1 and mm>= 8 and dd > 30) or 
-        (mm == 4 and yyyy%4 == 0 and dd > 29) or (mm == 4 and yyyy%4 != 0 and dd > 28)):
-        return False
-    return True
+            error.append('at least one of: "mail, tel. number, facebook address" has to be filled')
+        if error == []:
+            print("naplnění dtb")
+        else:
+            print("error window")
