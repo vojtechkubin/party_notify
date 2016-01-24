@@ -5,12 +5,12 @@ from person import Person
 from main_window import Main_window
 from PyQt4 import QtGui
 
+
 def main():
 
     app = QtGui.QApplication(sys.argv)
     window = Main_window()
     sys.exit(app.exec_())
-
     '''
     data = (fake_db.load('data.json'))
     data2 = {}
