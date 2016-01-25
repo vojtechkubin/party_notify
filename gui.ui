@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StackedWidget</class>
+ <widget class="QStackedWidget" name="StackedWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>545</width>
+    <height>397</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>StackedWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="Page0">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="1">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="margin">
+       <number>15</number>
+      </property>
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>New person</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Edit/Delete person</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="Page1">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="1" column="0">
+       <widget class="QLabel" name="FirstNameLabel">
+        <property name="text">
+         <string>First name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="FirstNameLineEdit"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="secondNameLabel">
+        <property name="text">
+         <string>Second name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="secondNameLineEdit"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="birthdayDateLabel">
+        <property name="text">
+         <string>Birthday date:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDateEdit" name="birthdayDateDateEdit">
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="namedayDateLabel">
+        <property name="text">
+         <string>Nameday date:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QDateEdit" name="namedayDateDateEdit">
+        <property name="displayFormat">
+         <string>d.M</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="mailAddressLabel">
+        <property name="text">
+         <string>Mail address:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="mailAddressLineEdit"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="telNumberLabel">
+        <property name="text">
+         <string>Tel. number:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="telNumberLineEdit"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="facebookAddressLabel">
+        <property name="text">
+         <string>Facebook address:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="facebookAddressLineEdit"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="newPersonSubmit">
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionAdd_new_person">
+   <property name="text">
+    <string>Add new person</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>FirstNameLineEdit</tabstop>
+  <tabstop>secondNameLineEdit</tabstop>
+  <tabstop>birthdayDateDateEdit</tabstop>
+  <tabstop>namedayDateDateEdit</tabstop>
+  <tabstop>mailAddressLineEdit</tabstop>
+  <tabstop>telNumberLineEdit</tabstop>
+  <tabstop>facebookAddressLineEdit</tabstop>
+  <tabstop>newPersonSubmit</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
