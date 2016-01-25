@@ -119,7 +119,10 @@ class Main_window(QtGui.QWidget):
         self.error_msg = [QtGui.QLabel(), QtGui.QLabel(), QtGui.QLabel(), QtGui.QLabel()]
 
     def initform_person_add(self):
-        self.form_layout = QtGui.QFormLayout(self.widget_person_add)
+        self.parent_form_layout = QtGui.QHBoxLayout(self.widget_person_add)
+        self.form_layout_widget = QtGui.QWidget()
+        self.form_layout = QtGui.QFormLayout(self.form_layout_widget)
+        self.parent_form_layout.addWidget(self.form_layout_widget)
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
         self.form_layout.addRow("*&Second name:", self.second_name_line_edit)
         self.form_layout.addRow("*&Birthday date (DD.MM.YYYY):", self.birthday_date_line_edit)
