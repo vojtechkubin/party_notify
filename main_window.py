@@ -90,7 +90,7 @@ class Main_window(QtGui.QWidget):
     def initElements_person_add(self):
         self.submit_btn = QtGui.QPushButton('Submit', self)
         self.submit_btn.resize(self.submit_btn.sizeHint())
-        self.submit_btn.clicked.connect(self.form_on_clicked)
+        self.submit_btn.clicked.connect(self.add_new_person)
 
         self.menu_btn = QtGui.QPushButton('Back to menu', self)
         self.menu_btn.resize(self.menu_btn.sizeHint())
@@ -122,7 +122,7 @@ class Main_window(QtGui.QWidget):
         self.parent_form_layout = QtGui.QHBoxLayout(self.widget_person_add)
         self.form_layout_widget = QtGui.QWidget()
         self.form_layout = QtGui.QFormLayout(self.form_layout_widget)
-        self.parent_form_layout.addWidget(self.form_layout_widget)
+        self.parent_form_layout.addWidget(self.form_layout_widget)+
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
         self.form_layout.addRow("*&Second name:", self.second_name_line_edit)
         self.form_layout.addRow("*&Birthday date (DD.MM.YYYY):", self.birthday_date_line_edit)
@@ -160,7 +160,7 @@ class Main_window(QtGui.QWidget):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Return and self.widget_person_add.isVisible() == True:
             #if the pressed key == ENTER -> button has been clicked
-            self.form_on_clicked()
+            self.add_new_person()
 
     @pyqtSlot()
     def back_to_menu(self):
@@ -171,7 +171,7 @@ class Main_window(QtGui.QWidget):
         self.stackedLayout.widget(0).show()
 
     @pyqtSlot()
-    def form_on_clicked(self):
+    def add_new_person(self):
 
         first_name = self.first_name_line_edit.text()
         second_name = self.second_name_line_edit.text()
