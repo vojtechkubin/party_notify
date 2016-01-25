@@ -13,15 +13,25 @@ class Main_window(QtGui.QWidget):
     def initUI(self):
         self.stackedLayout = QtGui.QStackedLayout(self)
 
-        self.widget1 = QtGui.QWidget()
-        self.widget2 = QtGui.QWidget()
+        self.widget_menu = QtGui.QWidget()
+        self.widget_person_add = QtGui.QWidget()
+        self.widget_person_change = QtGui.QWidget()
+        self.widget_person_delete = QtGui.QWidget()
+        self.widget_db_add = QtGui.QWidget()
+        self.widget_db_change = QtGui.QWidget()
+        self.widget_db_delete = QtGui.QWidget()
 
         self.initElements_person_add()
         self.initform_person_add()
         self.initElements_menu()
 
-        self.stackedLayout.addWidget(self.widget1)
-        self.stackedLayout.addWidget(self.widget2)
+        self.stackedLayout.addWidget(self.widget_menu)
+        self.stackedLayout.addWidget(self.widget_person_add)
+        self.stackedLayout.addWidget(self.widget_person_change)
+        self.stackedLayout.addWidget(self.widget_person_delete)
+        self.stackedLayout.addWidget(self.widget_db_add)
+        self.stackedLayout.addWidget(self.widget_db_change)
+        self.stackedLayout.addWidget(self.widget_db_delete)
         self.stackedLayout.widget(0).show()
 
         self.resize(500, 500)
@@ -31,7 +41,7 @@ class Main_window(QtGui.QWidget):
         self.show()
 
     def initElements_menu(self):
-        self.menu_layout = QtGui.QVBoxLayout(self.widget1)
+        self.menu_layout = QtGui.QVBoxLayout(self.widget_menu)
         self.buttons_layout = QtGui.QHBoxLayout()
         self.label_layout = QtGui.QHBoxLayout()
         self.left_layout = QtGui.QVBoxLayout()
@@ -78,9 +88,13 @@ class Main_window(QtGui.QWidget):
         self.buttons_layout.addLayout(self.right_layout)
 
     def initElements_person_add(self):
-        self.btn = QtGui.QPushButton('Submit', self)
-        self.btn.resize(self.btn.sizeHint())
-        self.btn.clicked.connect(self.form_on_clicked)
+        self.submit_btn = QtGui.QPushButton('Submit', self)
+        self.submit_btn.resize(self.submit_btn.sizeHint())
+        self.submit_btn.clicked.connect(self.form_on_clicked)
+
+        self.menu_btn = QtGui.QPushButton('Back to menu', self)
+        self.menu_btn.resize(self.menu_btn.sizeHint())
+        self.menu_btn.clicked.connect(self.back_to_menu)
 
         self.first_name_line_edit = QtGui.QLineEdit()
 
@@ -103,7 +117,7 @@ class Main_window(QtGui.QWidget):
         self.facebook_line_edit = QtGui.QLineEdit()
 
     def initform_person_add(self):
-        self.form_layout = QtGui.QFormLayout(self.widget2)
+        self.form_layout = QtGui.QFormLayout(self.widget_person_add)
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
         self.form_layout.addRow("*&Second name:", self.second_name_line_edit)
         self.form_layout.addRow("*&Birthday date (DD.MM.YYYY):", self.birthday_date_line_edit)
@@ -111,7 +125,15 @@ class Main_window(QtGui.QWidget):
         self.form_layout.addRow("&Mail address:", self.mail_line_edit)
         self.form_layout.addRow("&Tel. number:", self.tel_number_line_edit)
         self.form_layout.addRow("&Facebook address:", self.facebook_line_edit)
-        self.form_layout.addRow("", self.btn)
+        self.form_layout.addRow("", self.submit_btn)
+        self.form_layout.addRow("", self.menu_btn)
+
+    def initElements_person_change(self):
+        pass
+
+    def initElements_person_delete(self):
+        pass
+
 
     def center(self):
         qr = self.frameGeometry()
@@ -126,9 +148,17 @@ class Main_window(QtGui.QWidget):
 
     @pyqtSlot()
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Return:
+        if event.key() == Qt.Key_Return and self.widget_person_add.isVisible() == True:
             #if the pressed key == ENTER -> button has been clicked
-            self.btn_on_clicked()
+            self.form_on_clicked()
+
+    @pyqtSlot()
+    def back_to_menu(self):
+        self.stackedLayout.widget(1).hide()
+        self.stackedLayout.widget(2).hide()
+        self.stackedLayout.widget(3).hide()
+        self.stackedLayout.widget(4).hide()
+        self.stackedLayout.widget(0).show()
 
     @pyqtSlot()
     def form_on_clicked(self):
