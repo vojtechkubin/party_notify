@@ -12,7 +12,7 @@ class Main_window(QtGui.QWidget):
 
     def initUI(self):
         self.stackedLayout = QtGui.QStackedLayout(self)
-        
+
         self.widget1 = QtGui.QWidget()
         self.widget2 = QtGui.QWidget()
 
@@ -71,12 +71,12 @@ class Main_window(QtGui.QWidget):
         self.left_layout.addWidget(self.change_p_btn)
         self.left_layout.addWidget(self.delete_p_btn)
         self.buttons_layout.addLayout(self.left_layout)
-        
+
         self.right_layout.addWidget(self.new_db_btn)
         self.right_layout.addWidget(self.change_db_btn)
         self.right_layout.addWidget(self.delete_db_btn)
         self.buttons_layout.addLayout(self.right_layout)
-    
+
     def initElements_person_add(self):
         self.btn = QtGui.QPushButton('Submit', self)
         self.btn.resize(self.btn.sizeHint())
@@ -102,12 +102,6 @@ class Main_window(QtGui.QWidget):
 
         self.facebook_line_edit = QtGui.QLineEdit()
 
-    @pyqtSlot()
-    def new_p_btn_click(self):
-        self.stackedLayout.widget(0).hide()
-        self.stackedLayout.widget(1).show()
-
-
     def initform_person_add(self):
         self.form_layout = QtGui.QFormLayout(self.widget2)
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
@@ -124,6 +118,11 @@ class Main_window(QtGui.QWidget):
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
+    @pyqtSlot()
+    def new_p_btn_click(self):
+        self.stackedLayout.widget(0).hide()
+        self.stackedLayout.widget(1).show()
 
     @pyqtSlot()
     def keyPressEvent(self, event):
@@ -155,6 +154,3 @@ class Main_window(QtGui.QWidget):
             #naplnění db
             new_person = Person(first_name, second_name, birthday_date, nameday_date, mail, tel_number, facebook)
             self.db.append(new_person)
-            print("actual data", self.db)
-
-            fake_db.save(self.db, "data.json")
