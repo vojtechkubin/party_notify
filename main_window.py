@@ -116,6 +116,8 @@ class Main_window(QtGui.QWidget):
 
         self.facebook_line_edit = QtGui.QLineEdit()
 
+        self.error_msg = [QtGui.QLabel(), QtGui.QLabel(), QtGui.QLabel(), QtGui.QLabel()]
+
     def initform_person_add(self):
         self.form_layout = QtGui.QFormLayout(self.widget_person_add)
         self.form_layout.addRow("*&First name:", self.first_name_line_edit)
@@ -127,6 +129,11 @@ class Main_window(QtGui.QWidget):
         self.form_layout.addRow("&Facebook address:", self.facebook_line_edit)
         self.form_layout.addRow("", self.submit_btn)
         self.form_layout.addRow("", self.menu_btn)
+        self.form_layout.addRow(QtGui.QLabel())
+        self.form_layout.addRow("", self.error_msg[0])
+        self.form_layout.addRow("", self.error_msg[1])
+        self.form_layout.addRow("", self.error_msg[2])
+        self.form_layout.addRow("", self.error_msg[3])
 
     def initElements_person_change(self):
         pass
@@ -177,9 +184,14 @@ class Main_window(QtGui.QWidget):
         if not second_name:
             error.append('second name is empty')
         if not mail and not tel_number and not facebook:
-            error.append('at least one of: "mail, tel. number, facebook address" has to be filled')
+            error.append('mail or tel. number or facebook address has to be filled')
+
+        for x in range(len(self.error_msg)):
+            self.error_msg[x].setText("")
+
         if error != []:
-            print(error)
+            for x in range(len(error)):
+                self.error_msg[x].setText(error[x])
         else:
             #naplnění db
             new_person = Person(first_name, second_name, birthday_date, nameday_date, mail, tel_number, facebook)
