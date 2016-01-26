@@ -4,6 +4,7 @@ from PyQt4 import QtGui
 
 
 def main():
+    """Skusam sa to rozbit"""
 
     app = QtGui.QApplication(sys.argv)
     app.setStyle(QtGui.QStyleFactory.create("plastique"))
